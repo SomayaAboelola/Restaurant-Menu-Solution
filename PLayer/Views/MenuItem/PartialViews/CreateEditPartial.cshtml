@@ -1,0 +1,58 @@
+﻿@model MenuItemViewModel ;
+@{
+    var category = new SelectList(@ViewBag.category, "Id", "Name");
+}
+
+@if (Model?.ImageUrl is not null)
+{
+    <div class="form-control">
+
+        <img src="~/Files/Images/@Model.ImageUrl" height="150" width="150" class="img-circle" alt="dish image" />
+      
+    </div>
+}  
+
+
+
+<div class="form-group">
+    <label asp-for="Name" class="col-form-label"></label>
+    <input class="form-control" asp-for="Name">
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+
+    <div class="form-group">
+        <label asp-for="Image"></label>
+        <input class="form-control" asp-for="Image" />
+        <input hidden asp-for="@Model.ImageUrl" />
+    </div>
+
+
+<div class="form-group">
+    <label asp-for="Description" class="col-form-label"></label>
+    <input class="form-control" asp-for="Description">
+    <span asp-validation-for="Description" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Price" class="col-form-label"></label>
+    <input class="form-control" asp-for="Price">
+    <span asp-validation-for="Price" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <label asp-for="Category" class="col-form-label"></label>
+   
+    <select class ="form-control" asp-items="@category" asp-for="CategoryId">
+        <option value="@null">------------Select Option-----------</option>
+     </select>
+    
+    <span asp-validation-for="CategoryId" class="text-danger"></span>
+</div>
+
+<div class="form-group" form-check>
+   
+    <label class="form-check-label" asp-for="@Model.IsActive" ></label>
+    <br />
+    <input  class="form-check-input" type="checkbox" asp-for="@Model.IsActive" />
+    <span asp-validation-for="IsActive" class="text-danger"></span>
+</div>
+

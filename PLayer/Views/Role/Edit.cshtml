@@ -1,0 +1,24 @@
+﻿@model RolesViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<br />
+<form asp-action="Edit" enctype="multipart/form-data">
+    <input hidden asp-for="Id" value="@Model.Id" />
+    <partial name="PartialViews/CreateEditPartialView" model="@Model" />
+    <div>
+
+        <a asp-action="AddOrRemoveUsers" class="btn btn-success" asp-controller="Role" asp-route-roleId="@Model.Id">AddOrRemoveUsers</a>
+        <br />
+    </div>
+
+    <input type="submit" class="btn btn-primary mt-3" value="Save" />
+    <a asp-action="Index" class="btn btn-light mt-3">Back to List</a>
+</form>
+@section ValidationScriptSection {
+    <partial name="_ValidationScriptsPartial" />
+}

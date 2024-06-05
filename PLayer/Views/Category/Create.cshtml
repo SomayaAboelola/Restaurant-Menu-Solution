@@ -1,0 +1,19 @@
+﻿
+ @model CategoryViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create New Category</h1>
+<br />
+<form asp-action="Create" enctype="multipart/form-data">
+   
+    <partial name="PartialViews/CreateEditPartial" />
+   <br />
+    <button type="submit" class="btn btn-primary mt-3">Submit</button> 
+    <a asp-action="Index" class="btn btn-light mt-3">Back to List</a>
+</form>
+@section ValidationScriptSection {
+    <partial name="_ValidationScriptsPartial" />
+}
+ 

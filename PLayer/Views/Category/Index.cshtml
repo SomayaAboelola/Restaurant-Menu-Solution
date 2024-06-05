@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CategoryViewModel>;
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h1>All Category</h1>
+<br />
+<a asp-action="Create" class="btn btn-success">Create New Item</a>
+<a></a>
+<br />
+@if (Model.Count() > 0)
+{
+
+    <table class="table table-striped table-hover mt-3">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(i => i.Name)</th>
+           
+
+                <th scope="col">Details</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+
+                    <partial name="_buttonPartialView"  model="@item.Id.ToString()"/>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+}
+else
+{
+    <div class="alert alert-warning">
+        <h3>There is No Menu Creation</h3>
+    </div>
+
+
+}

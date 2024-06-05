@@ -1,0 +1,50 @@
+﻿@model IEnumerable<RolesViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>All Roles</h1>
+<br />
+<div>
+<a asp-action="Create" class="btn btn-success">Create New Role</a>
+
+</div>
+<br />
+@if (Model.Count() > 0)
+{
+
+    <table class="table table-striped table-hover mt-5">
+        <thead>
+            <tr>
+                <td>@Html.DisplayNameFor(U => U.Id)</td>
+                <td>@Html.DisplayNameFor(U => U.RoleName)</td>
+              
+
+                <th scope="col">Details</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var model in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(U => model.Id)</td>
+                    <td>@Html.DisplayFor(U => model.RoleName)</td>
+                    
+
+                    <partial name="_buttonPartialView" model="model.Id" />
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+else
+{
+    <div class="alert alert-warning">
+        <h3>There is No Users</h3>
+    </div>
+}
